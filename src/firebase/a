@@ -1,0 +1,32 @@
+
+auth.onAuthStateChanged(async (userAuth, additionalData) => {
+    if (!userAuth) return;
+
+    const userRef = firestore.doc(`user/{userAuth.uid}`)
+    const snapshot = userRef.get()
+
+    if (!snapshot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            })
+        } catch (err) {
+            console.log('error creating user', err.message)
+        }
+    }
+    return userRef;
+})
+
+
+
+
+componentDidMount() {
+    this.unsubscribeFromAuth = createUserProfileDocument(userAuth)
+}
+
