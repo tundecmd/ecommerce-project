@@ -26,6 +26,9 @@ class App extends Component {
               id: snapShot.id,
               ...snapShot.data()
             }
+          },
+          () => {
+            console.log(this.state);
           })
         })
       } else {
@@ -41,7 +44,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.currentUser);
     return (
       <div>
         <Header currentUser={this.state.currentUser} />
