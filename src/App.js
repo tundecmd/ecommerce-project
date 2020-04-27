@@ -38,7 +38,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('line 41,', this.props.currentUser);
     return (
       <div>
         <Header/>
@@ -69,7 +68,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser
   }
