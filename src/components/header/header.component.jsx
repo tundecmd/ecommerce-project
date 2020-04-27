@@ -10,7 +10,6 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 class Header extends Component {
     
     render() {
-        console.log(this.props);
         const { currentUser, hidden } = this.props;
         return <div className="header">
         <Link to='/' className='logo-container'>
@@ -41,7 +40,7 @@ class Header extends Component {
             <CartIcon className='option' />
         </div>
         {
-            hidden ? (null) : (<CartDropdown />)
+            hidden ? null : (<CartDropdown />)
         }
     </div>
     }
